@@ -28,8 +28,6 @@ mv %{_topdir}/BUILD/%{filename0} %{_topdir}/SOURCES/%{filename0}
 %build
 
 ar -xv %{_topdir}/SOURCES/%{filename0}
-rm -rf %{_topdir}/BUILD/opt
-rm -rf %{_topdir}/BUILD/usr
 rm -f debian-binary
 rm -f control.tar.xz
 tar --level=1 --xz -xvf data.tar.xz
@@ -39,6 +37,9 @@ rm -f data.tar.xz
 %install
 
 cp -rav . %{buildroot}/
+
+rm -rf %{_topdir}/BUILD/opt
+rm -rf %{_topdir}/BUILD/usr
 
 %check
 
