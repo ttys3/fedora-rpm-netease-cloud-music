@@ -20,7 +20,10 @@ URL:            https://music.163.com/#/download
 Source0:        %{deb0}
 
 BuildRequires:  curl coreutils
-Requires:       libnsl
+Requires:       libnsl%{?_isa} >= 2.30
+Requires:       zlib%{?_isa} >= 1.2.3
+
+AutoReqProv:    no
 
 %description
 Netease cloud music player.
