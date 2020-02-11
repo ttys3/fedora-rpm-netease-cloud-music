@@ -3,7 +3,8 @@
 %global deb0            http://d1.music.126.net/dmusic/%{filename0}
 %global downloadcmd0    /usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -O %{deb0}
 
-%%global _build_id_links none
+# need build with: QA_RPATHS=$(( 0x0004|0x0008 )) rpmbuild -ba -v ./netease-cloud-music.spec
+# %%global _build_id_links none
 
 Name:           netease-cloud-music
 Version:        %{netease_ver}
