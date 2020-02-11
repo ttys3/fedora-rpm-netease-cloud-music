@@ -44,7 +44,7 @@ mv %{_topdir}/BUILD/%{filename0} %{SOURCE0}
 ar p %{SOURCE0} data.tar.xz | tar -xJf- -C %{buildroot}
 
 # fixup HiDPI problem
-sed -i 's/Exec=*/Exec=env QT_AUTO_SCREEN_SCALE_FACTOR=1 QT_SCALE_FACTOR=1 netease-cloud-music %U/' %{buildroot}/usr/share/applications/netease-cloud-music.desktop
+sed -i 's/Exec=.*/Exec=env QT_AUTO_SCREEN_SCALE_FACTOR=1 QT_SCALE_FACTOR=1 netease-cloud-music %U/' %{buildroot}/usr/share/applications/netease-cloud-music.desktop
 
 %check
 
