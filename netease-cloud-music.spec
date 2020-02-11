@@ -3,6 +3,7 @@
 %global deb0            http://d1.music.126.net/dmusic/%{filename0}
 %global downloadcmd0    /usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -O %{deb0}
 
+%global packager    荒野無燈 <ttys3@outlook.com>
 # need build with: QA_RPATHS=$(( 0x0004|0x0008 )) rpmbuild -ba -v ./netease-cloud-music.spec
 # %%global _build_id_links none
 
@@ -13,7 +14,7 @@ Summary:        Netease Cloud Music
 
 License:        custom
 URL:            https://music.163.com/#/download
-Source0:        %{deb0}
+Source0:        %{filename0}
 
 BuildRequires:  curl coreutils
 Requires:       libnsl
@@ -22,11 +23,11 @@ Requires:       libnsl
 Netease cloud music player.
 Maintainer: zccrs <zhangjide@deepin.com>
 Homepage: https://www.deepin.org
-rpm package converted from .deb package by 荒野無燈
+rpm package converted from .deb
 thanks to https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=netease-cloud-music
 
 %prep
-%{downloadcmd0}
+test -f %{filename0} || %{downloadcmd0}
 mv %{_topdir}/BUILD/%{filename0} %{_topdir}/SOURCES/%{filename0}
 
 %build
@@ -57,4 +58,5 @@ rm -rf %{_topdir}/BUILD/usr
 
 %changelog
 
-* 2020-02-11 init release rpm package
+* Tue Feb 11 2020 荒野無燈 <ttys3@outlook.com>
+- converted from amd64_ubuntu_20190428.deb
