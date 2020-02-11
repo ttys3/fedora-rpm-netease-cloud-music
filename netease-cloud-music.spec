@@ -10,9 +10,10 @@
 Name:           netease-cloud-music
 Version:        %{netease_ver}
 Release:        1%{?dist}
+Group:          Applications/AudioVideo
 Summary:        Netease Cloud Music
 
-License:        custom
+License:        Proprietary
 URL:            https://music.163.com/#/download
 Source0:        %{filename0}
 
