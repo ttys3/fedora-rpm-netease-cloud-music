@@ -12,7 +12,7 @@
 Name:           %{pkg_name}
 Version:        %{netease_ver}
 Release:        1%{?dist}
-Group:          Applications/AudioVideo
+Group:          Applications/Multimedia
 Summary:        Netease Cloud Music
 
 License:        Proprietary
