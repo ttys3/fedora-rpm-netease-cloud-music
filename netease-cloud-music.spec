@@ -9,7 +9,7 @@
 Name:           netease-cloud-music
 Version:        %{netease_ver}
 Release:        1%{?dist}
-Summary:        Netease Cloud Music, converted from .deb package
+Summary:        Netease Cloud Music
 
 License:        custom
 URL:            https://music.163.com/#/download
@@ -20,6 +20,9 @@ Requires:       libnsl
 
 %description
 Netease cloud music player.
+Maintainer: zccrs <zhangjide@deepin.com>
+Homepage: https://www.deepin.org
+rpm package converted from .deb package by 荒野無燈
 thanks to https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=netease-cloud-music
 
 %prep
