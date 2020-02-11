@@ -15,3 +15,9 @@ QA_RPATHS=$(( 0x0004|0x0008 )) rpmbuild -ba -v ./netease-cloud-music.spec
 # install
 sudo dnf install -y $HOME/rpmbuild/RPMS/x86_64/netease-cloud-music-1.2.1-1.fc31.x86_64.rpm
 ```
+
+## thanks to
+
+https://github.com/Senorsen/netease-cloud-music-rpm
+
+https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=netease-cloud-music 
