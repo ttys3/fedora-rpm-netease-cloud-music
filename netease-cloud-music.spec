@@ -3,11 +3,13 @@
 %global deb0            http://d1.music.126.net/dmusic/%{filename0}
 %global downloadcmd0    /usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -O %{deb0}
 
+%global pkg_name        netease-cloud-music
 %global packager    荒野無燈 <ttys3@outlook.com>
+
 # need build with: QA_RPATHS=$(( 0x0004|0x0008 )) rpmbuild -ba -v ./netease-cloud-music.spec
 # %%global _build_id_links none
 
-Name:           netease-cloud-music
+Name:           %{pkg_name}
 Version:        %{netease_ver}
 Release:        1%{?dist}
 Group:          Applications/AudioVideo
@@ -15,7 +17,7 @@ Summary:        Netease Cloud Music
 
 License:        Proprietary
 URL:            https://music.163.com/#/download
-Source0:        %{filename0}
+Source0:        %{deb0}
 
 BuildRequires:  curl coreutils
 Requires:       libnsl
@@ -28,24 +30,21 @@ rpm package converted from .deb
 thanks to https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=netease-cloud-music
 
 %prep
-test -f %{filename0} || %{downloadcmd0}
-mv %{_topdir}/BUILD/%{filename0} %{_topdir}/SOURCES/%{filename0}
 
 %build
 
-ar -xv %{_topdir}/SOURCES/%{filename0}
-rm -f debian-binary
-rm -f control.tar.xz
-tar --level=1 --xz -xvf data.tar.xz
-rm -f data.tar.xz
-
-
 %install
 
-cp -rav . %{buildroot}/
+%if 0%(test ! -f %{SOURCE0}) == 0
+%{downloadcmd0}
+mv %{_topdir}/BUILD/%{filename0} %{SOURCE0}
+%endif
 
-rm -rf %{_topdir}/BUILD/opt
-rm -rf %{_topdir}/BUILD/usr
+# Unpack the deb, correcting the lib directory and removing debian directories
+ar p %{SOURCE0} data.tar.xz | tar -xJf- -C %{buildroot}
+
+# fixup HiDPI problem
+sed -i 's/Exec=*/Exec=env QT_AUTO_SCREEN_SCALE_FACTOR=1 QT_SCALE_FACTOR=1 netease-cloud-music %U/' %{buildroot}/usr/share/applications/netease-cloud-music.desktop
 
 %check
 
