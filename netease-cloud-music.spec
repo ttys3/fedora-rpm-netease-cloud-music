@@ -56,7 +56,8 @@ sed -i 's/Exec=.*/Exec=env QT_AUTO_SCREEN_SCALE_FACTOR=1 QT_SCALE_FACTOR=1 netea
 %license
 %doc
 /opt/*
-/usr/*
+/usr/bin/*
+/usr/share/*
 
 
 %changelog
